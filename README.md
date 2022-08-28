@@ -1,5 +1,4 @@
 # gulp-academico
-Repositório de estudo da ferramenta gulp para minificar e compilar arquivos
 
 ## 📝 Repositório de Estudo - Gulp
 
@@ -9,5 +8,24 @@ Repositório de estudo da ferramenta gulp para minificar e compilar arquivos
 
 O projeto é composto das seguintes caracteristicas:
 
-- **Instalação do Node.js:** Para a realização das tarefas se fez necessário a isntalação do node.js;
-- **Instalação de pacotes NPM:** efetuado a instalação de diversos pacotes necessários para rodar as implementações e criação dos arquivos minificados;
+- **Instalação do Node.js:** Para a realização das tarefas se fez necessário a isntalação do node.js
+- **Instalação de pacotes NPM:** efetuado a instalação de diversos pacotes necessários para rodar as implementações e criação dos arquivos minificados
+- **Instalação do Gulp:** instalação do gulp através do comando npm install gulp-cli -g
+- **Instalação de Plugins:** Utilização do plugins gulp-rename, gulp-uglify, gulp-concat, gulp-cssmin, gulp-image
+
+---
+
+## 💼 Tecnologias utilizadas
+
+Para o desenvolvimento do projeto foi utilizado as seguintes tecnologias:
+
+- JavaScript;
+- Gulp 4.0.2;
+- Node.js 16.15.0;
+
+---
+
+## 🙋🏻‍♂️ Autor
+
+Bruno Oliveira
+
