@@ -1,0 +1,31 @@
+{
+  "name": "gulp-academico",
+  "version": "1.0.0",
+  "description": "- Este repositório trata-se da aplicação da ferramenta gulp para realizar minificação de arquivos css, js, imagens através da criação de pipelines.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoOliveira16/gulp-academico.git"
+  },
+  "keywords": [],
+  "author": "Bruno Oliveira",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "jquery": "^3.6.1"
+  },
+  "bugs": {
+    "url": "https://github.com/BrunoOliveira16/gulp-academico/issues"
+  },
+  "homepage": "https://github.com/BrunoOliveira16/gulp-academico#readme"
+}
