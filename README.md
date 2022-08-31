@@ -5,7 +5,7 @@
 - Este repositório trata-se da aplicação da ferramenta gulp para realizar minificação de arquivos css, js, imagens através da criação de pipelines.
 
 ---
-## 📝 Executando o projeto
+## ⚙️ Executando o projeto
 
 - Após clonar o repositório, execute os passos a baixo para rodar o projeto (certifique-se de ter o node instalado na sua máquina):
 
