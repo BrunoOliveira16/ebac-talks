@@ -4,7 +4,7 @@ const concat = require('gulp-concat')
 const cssmin = require('gulp-cssmin')
 const rename = require('gulp-rename')
 const uglify = require('gulp-uglify')
-const imagemin = require('gulp-imagemin')
+/*const image = require('gulp-image')*/
 const stripCss = require('gulp-strip-css-comments')
 const stripJs = require('gulp-strip-comments')
 const htmlmin = require('gulp-htmlmin')
@@ -12,13 +12,14 @@ const babel = require('gulp-babel')
 const browserSync = require('browser-sync').create()
 const reload = browserSync.reload
 
+//Processo de minificação de arquivos CSS
 function tarefasCSS(cb) {
 
 /*return*/  gulp.src([
             './node_modules/bootstrap/dist/css/bootstrap.css',
             './node_modules/@fortawesome/fontawesome-free/css/fontawesome.css',
             './vendor/owl/css/owl.css',
-            './vendor/jquery-ui/jquery-ui.css',
+            /*'./vendor/jquery-ui/jquery-ui.css',*/ //arquivo >500kb dando erro
             './src/css/style.css'
         ])
         .pipe(stripCss())                 // remove comentários css   
@@ -30,6 +31,7 @@ function tarefasCSS(cb) {
     cb()
 }
 
+//Processo de minificação de arquivos JavaScript
 function tarefasJS(callback) {
 
 /*return*/  gulp.src([
@@ -37,7 +39,7 @@ function tarefasJS(callback) {
             './node_modules/bootstrap/dist/js/bootstrap.js',
             './vendor/owl/js/owl.js',
             './vendor/jquery-mask/jquery.mask.js',
-            './vendor/jquery-ui/jquery-ui.js',
+            /*'./vendor/jquery-ui/jquery-ui.js',*/ //arquivo >500kb dando erro
             './src/js/custom.js'
         ])
         .pipe(babel({
@@ -52,16 +54,23 @@ function tarefasJS(callback) {
     return callback()
 }
 
-function tarefasImagem(cb){
-
-    gulp.src('src/images/*.{png,jpg,jpeg}')
-        .pipe(imagemin({
-            verbose: true
+//Processo para compactação das imagens
+/*function tarefasImagem(){
+    
+    return gulp.src('./src/images/*')
+        .pipe(image({
+            pngquant: true,
+            optipng: false,
+            zopflipng: true,
+            jpegRecompress: false,
+            mozjpeg: true,
+            gifsicle: true,
+            svgo: true,
+            concurrent: 10,
+            quiet: true
         }))
-        .pipe(dest('./dist/images'))
-
-    cb()
-}
+        .pipe(gulp.dest('./dist/images'))
+}*/
 
 // POC - Proof of concept
 function tarefasHTML(callback){
@@ -73,6 +82,7 @@ function tarefasHTML(callback){
     return callback()
 }
 
+// Chamada para servidor gulp
 gulp.task('serve', function(){
 
     browserSync.init({
@@ -80,12 +90,19 @@ gulp.task('serve', function(){
             baseDir: "./dist"
         }
     })
-    gulp.watch('./dist/**/*').on('change', reload)
-
+    gulp.watch('./src/**/*').on('change', process) //processo se repete quando alterar algo no src
+    gulp.watch('./src/**/*').on('change', reload) //atualiza o projeto de forma automática, sem precisar recargar a página manualmente
 })
 
+//Retorno do fim do processo
+function end(cb){
+    console.log("tarefas concluidas")
+    return cb()
+}
+
+// Chamadas do processo
+const process = series( tarefasHTML, tarefasJS, tarefasCSS, end)
 exports.styles = tarefasCSS
 exports.scripts = tarefasJS
-exports.images = tarefasImagem
-
-exports.default = parallel( tarefasHTML, tarefasJS, tarefasCSS)
+/*exports.images = tarefasImagem*/
+exports.default = process

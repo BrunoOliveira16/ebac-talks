@@ -21,13 +21,9 @@ npm install gulp-cli -g
 ```
 gulp
 ```
-- **Passo 04:** Execute o comando abaixo no terminal, para a criação do arquivo minificado css:
+- **Passo 04:** Execute o comando abaixo no terminal, para a criação do servidor gulp:
 ```
-gulp styles
-```
-- **Passo 05:** Execute o comando abaixo no terminal, para a criação do arquivo minificado js:
-```
-gulp scripts
+gulp serve
 ```
 
 ---
@@ -39,7 +35,8 @@ O projeto é composto das seguintes caracteristicas:
 - **Instalação de pacotes NPM:** efetuado a instalação de diversos pacotes necessários para rodar as implementações e criação dos arquivos minificados
 - **Instalação do Gulp:** instalação do gulp através do comando npm install gulp-cli -g
 - **Instalação de Plugins:** Utilização do plugins gulp-rename, gulp-uglify, gulp-concat, gulp-cssmin, gulp-image
-
+- **Criação de servidor:** Foi criado função para iniciar servidor gulp, para rodar o projeto através do comando gulp serve no terminal.
+- **Automatização de processos:** Foi criado funções para automatizar o processo de minificação e alterações no arquivo src x dist de forma automatica, sem precisar rodar o comando gulp para reiniciar o processo.
 ---
 
 ## 💼 Tecnologias utilizadas
@@ -49,6 +46,7 @@ Para o desenvolvimento do projeto foi utilizado as seguintes tecnologias:
 - JavaScript;
 - Gulp 4.0.2;
 - Node.js 16.15.0;
+- Babel 8.0.0
 
 ---
 
