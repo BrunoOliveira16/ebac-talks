@@ -1,4 +1,4 @@
-const { series, parallel } = require('gulp')
+const { series, parallel, src } = require('gulp')
 const gulp = require('gulp')
 const concat = require('gulp-concat')
 const cssmin = require('gulp-cssmin')
@@ -10,6 +10,7 @@ const stripJs = require('gulp-strip-comments')
 const htmlmin = require('gulp-htmlmin')
 const babel = require('gulp-babel')
 const browserSync = require('browser-sync').create()
+const sass = require('gulp-sass')(require('node-sass'))
 const reload = browserSync.reload
 
 //Processo de minificação de arquivos CSS
@@ -20,12 +21,11 @@ function tarefasCSS(cb) {
             './node_modules/@fortawesome/fontawesome-free/css/fontawesome.css',
             './vendor/owl/css/owl.css',
             /*'./vendor/jquery-ui/jquery-ui.css',*/ //arquivo >500kb dando erro
-            './src/css/style.css'
         ])
         .pipe(stripCss())                 // remove comentários css   
-        .pipe(concat('styles.css'))      // mescla arquivos
+        .pipe(concat('libs.css'))         // mescla arquivos
         .pipe(cssmin())                  // minifica css
-        .pipe(rename({ suffix: '.min'})) // styles.min.css
+        .pipe(rename({ suffix: '.min'})) // libs.min.css
         .pipe(gulp.dest('./dist/css'))   // cria arquivo em novo diretório
 
     cb()
@@ -52,6 +52,15 @@ function tarefasJS(callback) {
         .pipe(gulp.dest('./dist/js'))    // cria arquivo em novo diretório
 
     return callback()
+}
+
+function tarefasSASS(cb) {
+
+    gulp.src('./src/scss/**/*.scss')
+    .pipe(sass()) // transforma o sass em css
+    .pipe(gulp.dest('./dist/css'))
+
+    cb()
 }
 
 //Processo para compactação das imagens
@@ -101,8 +110,9 @@ function end(cb){
 }
 
 // Chamadas do processo
-const process = series( tarefasHTML, tarefasJS, tarefasCSS, end)
+const process = series( tarefasHTML, tarefasJS, tarefasCSS, tarefasSASS, end)
 exports.styles = tarefasCSS
 exports.scripts = tarefasJS
 /*exports.images = tarefasImagem*/
+exports.sass = tarefasSASS
 exports.default = process
