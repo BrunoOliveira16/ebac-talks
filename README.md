@@ -37,6 +37,7 @@ O projeto é composto das seguintes caracteristicas:
 - **Instalação de Plugins:** Utilização do plugins gulp-rename, gulp-uglify, gulp-concat, gulp-cssmin, gulp-image
 - **Criação de servidor:** Foi criado função para iniciar servidor gulp, para rodar o projeto através do comando gulp serve no terminal.
 - **Automatização de processos:** Foi criado funções para automatizar o processo de minificação e alterações no arquivo src x dist de forma automatica, sem precisar rodar o comando gulp para reiniciar o processo.
+- **Pre-processador Sass:** Utilização de sass para melhorar o css e automatizado processo de edição arquivos sass no gulp.
 ---
 
 ## 💼 Tecnologias utilizadas
@@ -46,7 +47,8 @@ Para o desenvolvimento do projeto foi utilizado as seguintes tecnologias:
 - JavaScript;
 - Gulp 4.0.2;
 - Node.js 16.15.0;
-- Babel 8.0.0
+- Babel 8.0.0;
+- SASS;
 
 ---
 
