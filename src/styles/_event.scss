@@ -7,8 +7,27 @@
         background-image: var(--linear-gradient-01);
     }
 
+    &--ux-ui {
+        background-image: var(--linear-gradient-02);
+    }
+
+    &--data-science {
+        background-image: var(--linear-gradient-03);
+    }
+
+    &--backend {
+        background-image: var(--linear-gradient-04);
+    }
+
+    &--image-left {
+        .container {
+            flex-direction: row-reverse;
+        }
+    }
+
     .container {
         display: flex;
+        gap: 40px;
     }
 
     &__image {
@@ -16,7 +35,6 @@
     }
 
     &__details {
-        margin-right: 40px;
 
         &__title {
             font-size: 24px;

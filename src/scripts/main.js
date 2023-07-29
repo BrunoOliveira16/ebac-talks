@@ -1,1 +1,1 @@
-console.log("teste")
+AOS.init();
